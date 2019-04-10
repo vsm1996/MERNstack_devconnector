@@ -5,6 +5,7 @@ const gravatar = require("gravatar");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
+const mongoose = require("mongoose");
 const passport = require("passport");
 
 // Load Input validation
@@ -18,7 +19,7 @@ const User = require("../../models/User");
 // @access  Public
 router.get("/test", (req, res) => res.json({ msg: "users works" }));
 
-// @route   GET api/users/register
+// @route   POST api/users/register
 // @desc    Register users
 // @access  Public
 router.post("/register", (req, res) => {
@@ -50,14 +51,14 @@ router.post("/register", (req, res) => {
           newUser
             .save()
             .then(user => res.json(user))
-            .catch(err => console.log(err));
+            .catch(err => res.json(err));
         });
       });
     }
   });
 });
 
-// @route   GET api/users/login
+// @route   POST api/users/login
 // @desc    Login users / Returning JWT Token
 // @access  Public
 router.post("/login", (req, res) => {
@@ -105,7 +106,7 @@ router.post("/login", (req, res) => {
         );
       } else {
         errors.password = "Password incorrect";
-
+        console.log("ERRORS: ", errors);
         return res.status(400).json(errors);
       }
     });
