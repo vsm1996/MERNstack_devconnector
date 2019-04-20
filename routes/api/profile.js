@@ -49,7 +49,7 @@ router.get("/all", (req, res) => {
     .then(profiles => {
       if (!profiles) {
         errors.noprofile = "There are no profiles";
-        return res.status(404).json(errors);
+        return res.status(400).json(errors);
       }
 
       res.json(profiles);
@@ -68,11 +68,11 @@ router.get("/handle/:handle", (req, res) => {
     .then(profile => {
       if (!profile) {
         errors.noprofile = "There is no profile for this user";
-        res.status(404).json(errors);
+        res.status(400).json(errors);
       }
       res.json(profile);
     })
-    .catch(err => res.status(404).json(err));
+    .catch(err => res.status(404).json({ profile: "No profile found" }));
 });
 
 // @route   GET api/profile/user/:user_id
@@ -173,8 +173,6 @@ router.post(
       // Return any errors with 400 status
       return res.status(400).json(errors);
     }
-    //fails because id is incorrect???
-    console.log(req.user.id);
     Profile.findOne({ user: req.user.id })
       .then(profile => {
         const newExp = {
@@ -186,7 +184,7 @@ router.post(
           current: req.body.current,
           description: req.body.description
         };
-        console.log("PROFILE", profile);
+        //console.log("PROFILE", profile);
         //Add to exp array
         profile.experience.unshift(newExp);
 
