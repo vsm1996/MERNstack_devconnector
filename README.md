@@ -5,4 +5,4 @@ It is a social media website for developers of all walks of life and comes with 
 
 Technologies: [ MongoDB, NodeJS, Express, React/Redux]
 
-DEPLOYED SITE: https://limitless-cliffs-83198.herokuapp.com/profiles
+DEPLOYED SITE: https://limitless-cliffs-83198.herokuapp.com/
