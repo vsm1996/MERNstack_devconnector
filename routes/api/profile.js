@@ -48,6 +48,7 @@ router.get("/all", (req, res) => {
     .populate("user", ["name", "avatar"])
     .then(profiles => {
       if (!profiles) {
+        console.log("peek-a-boo");
         errors.noprofile = "There are no profiles";
         return res.status(400).json(errors);
       }
