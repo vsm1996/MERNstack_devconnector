@@ -4,4 +4,5 @@ MERN stack course from Instructor Brad Traversy of Traversy Media ( course link:
 It is a social media website for developers of all walks of life and comes with login and registration, validations, authorizations, post, comments, likes, and profiles!
 
 Technologies: [ MongoDB, NodeJS, Express, React/Redux]
-https://www.udemy.com/mern-stack-front-to-back/
+
+DEPLOYED SITE: https://limitless-cliffs-83198.herokuapp.com/profiles
